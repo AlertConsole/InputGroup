@@ -5,8 +5,7 @@
 - 使用方法
 
   #### 安装
-
-  - ```
+    ```
     npm install react-input-groups;
     ```
 
