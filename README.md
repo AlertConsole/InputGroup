@@ -12,9 +12,9 @@
 
   #### 引入
 
-  - ```
+   ```
     import InputGroup from 'react-input-groups';
-    import 'react-input-groups/lib/css/styles.css'
+    import 'react-input-groups/lib/css/styles.css';
 
     export class Inputarea extends React.Component {
         constructor(props) {
