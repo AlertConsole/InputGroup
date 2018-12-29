@@ -8,7 +8,7 @@
     ```
     npm install react-input-groups;
     ```
-  ####api
+  #### api
        1:type目前支持两种'line'和'box'
        2:length目前两种长度 4和6
        3:getValue获取组件返回值的方法
