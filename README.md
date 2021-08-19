@@ -9,9 +9,11 @@
     npm install react-input-groups;
     ```
   #### api
-       1:type目前支持两种'line'和'box'
-       2:length目前两种长度 4和6
+       1:type目前支持两种'line'和'box',默认box
+       2:length目前两种长度 4和6,默认6
        3:getValue获取组件返回值的方法
+       4:filter重定义过滤条件
+       5:value设置默认参数
   #### 引入
 
    ```

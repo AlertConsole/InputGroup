@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.css';
-export default class InputGroup extends React.Component {
+
+class InputGroup extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,8 +14,8 @@ export default class InputGroup extends React.Component {
         this.inputFocus = this.inputFocus.bind(this);
     }
     textChange(e) {
-        const value = e.target.value.replace(/[^\d]/g, '')
-        this.props.getValue(value)
+        const value = this.props.filter(e).substr(0,this.props.length)
+        this.props?.getValue(value)
         this.setState({
             num: value
         })
@@ -29,7 +30,7 @@ export default class InputGroup extends React.Component {
         this.setState({ isFocus: true })
     }
     componentDidMount() {
-        const { length } = this.props;
+        const { length,value } = this.props;
         switch (length) {
             case 4:
                 this.setState({
@@ -41,11 +42,8 @@ export default class InputGroup extends React.Component {
                     boxLength: [0, 1, 2, 3, 4, 5]
                 })
                 break;
-            default:
-                this.setState({
-                    boxLength: [0, 1, 2, 3, 4, 5]
-                })
         }
+        value && this.textChange(value)
     }
     render() {
         const { length, type } = this.props;
@@ -60,7 +58,7 @@ export default class InputGroup extends React.Component {
                                 className="box-input"
                                 maxLength={length}
                                 value={num}
-                                onChange={this.textChange}
+                                onChange={({target})=>{this.textChange(target.value)}}
                                 onBlur={() => this.setState({ isFocus: false })}
                             />
                             <div className="box-containers">
@@ -81,7 +79,7 @@ export default class InputGroup extends React.Component {
                                 className="box-input"
                                 maxLength={length}
                                 value={num}
-                                onChange={this.textChange}
+                                onChange={({target})=>{this.textChange(target.value)}}
                                 onBlur={() => this.setState({ isFocus: false })}
                             />
                             <div className="box-container">
@@ -98,3 +96,11 @@ export default class InputGroup extends React.Component {
         );
     }
 }
+InputGroup.defaultProps ={
+    length:6,
+    type:'box',
+    filter:value=>{
+        return value.replace(/[\W+]/g, '')
+    }
+}
+export default InputGroup
